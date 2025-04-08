@@ -6,12 +6,12 @@ const ASSETS = [
     '/bootstrap/js/bootstrap.min.js',
     '/assets/css/style.css',
     '/pages/agendamento.html',
-    '/assets/js/agendamento.js', 
-    '/assets/js/jquery.min.js', 
-    '/assets/js/popper.min.js',  
+    '/assets/js/agendamento.js',
+    '/assets/js/jquery.min.js',
+    '/assets/js/popper.min.js',
     '/assets/js/attyear.js',
     '/assets/js/pwa.js',
-    '/service/manifest.json'
+    '/manifest.json'
 ]
 
 self.addEventListener('install', (event) => {
