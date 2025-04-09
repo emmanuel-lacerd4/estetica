@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shalon-adonai-v1'
+const CACHE_NAME = 'shalon-adonai-v2'
 const ASSETS = [
     '/',
     '/index.html',
@@ -6,12 +6,18 @@ const ASSETS = [
     '/bootstrap/js/bootstrap.min.js',
     '/assets/css/style.css',
     '/pages/agendamento.html',
-    '/assets/js/agendamento.js',
-    '/assets/js/jquery.min.js',
-    '/assets/js/popper.min.js',
+    '/assets/js/agendamento.js', 
+    '/assets/js/jquery.min.js', 
+    '/assets/js/popper.min.js',  
     '/assets/js/attyear.js',
     '/assets/js/pwa.js',
-    '/manifest.json'
+    '/manifest.json',
+    '/assets/img/cabelos.jpg',      
+    '/assets/img/unhas.jpg',        
+    '/assets/img/sobrancelhas.jpg', 
+    '/assets/img/depilacao.jpg',    
+    '/assets/img/podologia.jpg',    
+    '/assets/img/salao.jpg'         
 ]
 
 self.addEventListener('install', (event) => {
