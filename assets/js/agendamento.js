@@ -53,7 +53,7 @@ telefoneInput.addEventListener('input', function (e) {
     let valor = e.target.value.replace(/\D/g, '') // Remove não dígitos
 
     // Permite apagar completamente
-    if (valor.length === 0) {
+    if (!valor) {
         e.target.value = ''
         return
     }
@@ -63,10 +63,10 @@ telefoneInput.addEventListener('input', function (e) {
         valor = valor.slice(0, 11)
     }
 
-    // Aplica a máscara com base no comprimento
+    // Aplica a máscara apenas se houver dígitos suficientes
     let formatado = ''
     if (valor.length <= 2) {
-        formatado = `(${valor})`
+        formatado = valor
     } else if (valor.length <= 6) {
         formatado = `(${valor.slice(0, 2)}) ${valor.slice(2)}`
     } else if (valor.length <= 10) {
