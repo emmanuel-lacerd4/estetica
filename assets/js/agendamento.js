@@ -48,24 +48,35 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ✅ MÁSCARA DE TELEFONE
-    telefoneInput.addEventListener('input', function (e) {
-        let valor = e.target.value.replace(/\D/g, ''); // Remove não dígitos
+    // MÁSCARA DE TELEFONE
+telefoneInput.addEventListener('input', function (e) {
+    let valor = e.target.value.replace(/\D/g, '') // Remove não dígitos
 
-        if (valor.length > 11) {
-            valor = valor.slice(0, 11); // Máximo 11 dígitos
-        }
+    // Permite apagar completamente
+    if (valor.length === 0) {
+        e.target.value = ''
+        return
+    }
 
-        if (valor.length >= 2 && valor.length <= 6) {
-            valor = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
-        } else if (valor.length > 6 && valor.length <= 10) {
-            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 6)}-${valor.slice(6)}`;
-        } else if (valor.length > 10) {
-            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`;
-        }
+    // Limita a 11 dígitos
+    if (valor.length > 11) {
+        valor = valor.slice(0, 11)
+    }
 
-        e.target.value = valor;
-    });
+    // Aplica a máscara com base no comprimento
+    let formatado = ''
+    if (valor.length <= 2) {
+        formatado = `(${valor})`
+    } else if (valor.length <= 6) {
+        formatado = `(${valor.slice(0, 2)}) ${valor.slice(2)}`
+    } else if (valor.length <= 10) {
+        formatado = `(${valor.slice(0, 2)}) ${valor.slice(2, 6)}-${valor.slice(6)}`
+    } else {
+        formatado = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`
+    }
+
+    e.target.value = formatado
+})
 
     // Envio do formulário
     document.getElementById('agendamentoForm').addEventListener('submit', function (e) {
@@ -130,6 +141,6 @@ function createGoogleCalendarLink(nome, telefone, servico, startDate, endDate) {
     return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(servico)}` +
         `&dates=${startISO}/${endISO}` +
         `&details=${details}` +
-        `&location=Nanda - Shalon Adonai` +
+        `&location=Nanda - Shalom Adonai` +
         `&sf=true&output=xml`;
 }
