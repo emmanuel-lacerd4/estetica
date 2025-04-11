@@ -48,35 +48,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // MÁSCARA DE TELEFONE
-telefoneInput.addEventListener('input', function (e) {
-    let valor = e.target.value.replace(/\D/g, '') // Remove não dígitos
+    // ✅ MÁSCARA DE TELEFONE
+    telefoneInput.addEventListener('input', function (e) {
+        let valor = e.target.value.replace(/\D/g, ''); // Remove não dígitos
 
-    // Permite apagar completamente
-    if (!valor) {
-        e.target.value = ''
-        return
-    }
+        if (valor.length > 11) {
+            valor = valor.slice(0, 11); // Máximo 11 dígitos
+        }
 
-    // Limita a 11 dígitos
-    if (valor.length > 11) {
-        valor = valor.slice(0, 11)
-    }
+        if (valor.length >= 2 && valor.length <= 6) {
+            valor = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
+        } else if (valor.length > 6 && valor.length <= 10) {
+            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 6)}-${valor.slice(6)}`;
+        } else if (valor.length > 10) {
+            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`;
+        }
 
-    // Aplica a máscara apenas se houver dígitos suficientes
-    let formatado = ''
-    if (valor.length <= 2) {
-        formatado = valor
-    } else if (valor.length <= 6) {
-        formatado = `(${valor.slice(0, 2)}) ${valor.slice(2)}`
-    } else if (valor.length <= 10) {
-        formatado = `(${valor.slice(0, 2)}) ${valor.slice(2, 6)}-${valor.slice(6)}`
-    } else {
-        formatado = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`
-    }
-
-    e.target.value = formatado
-})
+        e.target.value = valor;
+    });
 
     // Envio do formulário
     document.getElementById('agendamentoForm').addEventListener('submit', function (e) {
@@ -141,6 +130,6 @@ function createGoogleCalendarLink(nome, telefone, servico, startDate, endDate) {
     return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(servico)}` +
         `&dates=${startISO}/${endISO}` +
         `&details=${details}` +
-        `&location=Nanda - Shalom Adonai` +
+        `&location=Nanda - Shalon Adonai` +
         `&sf=true&output=xml`;
 }

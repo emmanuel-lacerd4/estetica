@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#6a3093">
-    <title>Agendamento | Nanda - Shalom Adonai</title>
+    <title>Agendamentos | Nanda - Shalom Adonai</title>
     <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../assets/img/icons/ios/180.png">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
 
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">Telefone</label>
-                                <input type="tel" class="form-control" id="telefone" required autocomplete="off">
+                                <input type="tel" class="form-control" id="telefone" required>
                             </div>
 
                             <div class="mb-3">
@@ -144,20 +144,7 @@
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/attyear.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service_worker.js')
-                    .then((registration) => {
-                        console.log('Service Worker registrado com sucesso:', registration)
-                    })
-                    .catch((error) => {
-                        console.log('Falha ao registrar o Service Worker:', error)
-                    })
-            })
-        }
-    </script>
+    <script src="../assets/js/scripts.js"></script>
 </body>
 
 </html>
