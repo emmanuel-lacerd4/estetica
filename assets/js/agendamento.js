@@ -2,11 +2,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('agendamentoForm');
   const dataInput = document.getElementById('data');
   const horaSelect = document.getElementById('hora');
+  const telefoneInput = document.getElementById('telefone');
 
   // Impede datas passadas
   const hoje = new Date();
   dataInput.min = hoje.toISOString().split('T')[0];
 
+  // === FORMATAÇÃO DE TELEFONE DINÂMICA ===
+  telefoneInput.addEventListener('input', () => {
+    telefoneInput.value = formatarTelefone(telefoneInput.value);
+  });
+
+  function formatarTelefone(valor) {
+    const numeros = valor.replace(/\D/g, '');
+
+    if (numeros.length === 0) return '';
+
+    if (numeros.length <= 2) {
+      return `(${numeros}`;
+    }
+
+    if (numeros.length <= 6) {
+      return `(${numeros.slice(0, 2)}) ${numeros.slice(2)}`;
+    }
+
+    if (numeros.length <= 10) {
+      return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 6)}-${numeros.slice(6)}`;
+    }
+
+    return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7, 11)}`;
+  }
+
+  // === ATUALIZA HORÁRIOS AO MUDAR A DATA ===
   dataInput.addEventListener('change', () => {
     const data = new Date(dataInput.value + 'T12:00:00');
     const diaSemana = data.getDay();
@@ -35,10 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    horaSelect.innerHTML = horarios.length ? `<option disabled selected>Escolha um horário</option>` + horarios.join('')
+    horaSelect.innerHTML = horarios.length
+      ? `<option disabled selected>Escolha um horário</option>` + horarios.join('')
       : `<option>😢 Nenhum horário disponível</option>`;
   });
 
+  // === SUBMISSÃO DO FORMULÁRIO ===
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -67,18 +96,22 @@ document.addEventListener('DOMContentLoaded', () => {
     new bootstrap.Modal(document.getElementById('confirmacaoModal')).show();
   });
 
+  // === GERA LINK DO GOOGLE CALENDAR COM CONVIDADO ===
   function gerarLinkGoogleCalendar(nome, telefone, servico, inicio) {
     const fim = new Date(inicio.getTime() + (servico.includes("Manicure") ? 30 : 60) * 60000);
     const format = d => d.toISOString().replace(/[-:]/g, '').split('.')[0];
+    const emailConvidado = 'dantasandrew05@gmail.com'; // Substitua pelo seu email real
 
     return `https://www.google.com/calendar/render?action=TEMPLATE` +
       `&text=Agendamento+Shalom+Adonai+-+${nome.split(' ')[0]}` +
       `&dates=${format(inicio)}/${format(fim)}` +
       `&details=Cliente:${nome}%0ATelefone:${telefone}%0AServiço:${servico}` +
       `&location=Salão+Shalom+Adonai,+Rua+Nhatumani,+496` +
+      `&add=${encodeURIComponent(emailConvidado)}` +
       `&sf=true&output=xml`;
   }
 
+  // === GERA LINK DO WHATSAPP ===
   function gerarLinkWhatsApp(nome, telefone, servico, data, hora) {
     const texto = `Olá Shalom Adonai! Confirme meu agendamento:\n\n` +
       `*Nome:* ${nome}\n*Telefone:* ${telefone}\n*Data:* ${data} às ${hora}\n*Serviço:* ${servico}\n\nPor favor, confirme.`;
