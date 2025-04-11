@@ -2,149 +2,114 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#6a3093">
-    <title>Agendamentos | Nanda - Shalom Adonai</title>
-    <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../assets/img/icons/ios/180.png">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="manifest" href="../manifest.json">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendamento | Nanda - Shalom Adonai</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="icon" href="../assets/img/favicon.ico" />
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand navbar-dark bg-purple fixed-top">
+    <nav class="navbar navbar-dark bg-purple fixed-top">
         <div class="container">
             <a class="navbar-brand">Nanda - Shalom Adonai</a>
         </div>
     </nav>
 
-    <div class="container mt-5 pt-4">
+    <main class="container mt-5 pt-4">
         <h1 class="text-center mb-4">Agende Seu Horário</h1>
-
         <div class="row">
             <div class="col-md-6">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <form id="agendamentoForm">
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">Nome Completo</label>
-                                <input type="text" class="form-control" id="nome" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="telefone" class="form-label">Telefone</label>
-                                <input type="tel" class="form-control" id="telefone" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="servico" class="form-label">Serviço</label>
-                                <select class="form-select" id="servico" required>
-                                    <option value="" selected disabled>Selecione um serviço</option>
-                                    <option value="Corte e Escova - Nanda">Corte e Escova (Nanda)</option>
-                                    <option value="Coloração - Carla">Coloração (Carla)</option>
-                                    <option value="Manicure - Juliana">Manicure (Juliana)</option>
-                                    <option value="Pedicure - Juliana">Pedicure (Juliana)</option>
-                                    <option value="Design de Sobrancelhas - Ana">Design de Sobrancelhas (Ana)</option>
-                                    <option value="Depilação - Marta">Depilação (Marta)</option>
-                                    <option value="Podologia - Renata">Podologia (Renata)</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="data" class="form-label">Data</label>
-                                <input type="date" class="form-control" id="data" required onkeydown="return false"
-                                    onbeforeinput="event.preventDefault()" onfocus="this.showPicker()">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="hora" class="form-label">Horário</label>
-                                <select class="form-select" id="hora" required>
-                                    <option value="" selected disabled>Selecione um horário</option>
-                                </select>
-                            </div>
-
-                            <button type="submit" class="btn btn-purple w-100">Confirmar Agendamento</button>
-                        </form>
+                <form id="agendamentoForm" class="card shadow p-4">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome Completo</label>
+                        <input type="text" id="nome" class="form-control" required />
                     </div>
-                </div>
+                    <div class="mb-3">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="tel" id="telefone" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="servico" class="form-label">Serviço</label>
+                        <select id="servico" class="form-select" required>
+                            <option value="" selected disabled>Selecione um serviço</option>
+                            <option value="Corte e Escova - Nanda">Corte e Escova (Nanda)</option>
+                            <option value="Coloração - Carla">Coloração (Carla)</option>
+                            <option value="Manicure - Juliana">Manicure (Juliana)</option>
+                            <option value="Pedicure - Juliana">Pedicure (Juliana)</option>
+                            <option value="Design de Sobrancelhas - Ana">Design de Sobrancelhas (Ana)</option>
+                            <option value="Depilação - Marta">Depilação (Marta)</option>
+                            <option value="Podologia - Renata">Podologia (Renata)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="date" id="data" class="form-control" required onkeydown="return false" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="hora" class="form-label">Horário</label>
+                        <select id="hora" class="form-select" required>
+                            <option value="" selected disabled>Selecione um horário</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-purple w-100">Confirmar Agendamento</button>
+                </form>
             </div>
-
             <div class="col-md-6">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h5 class="card-title">Informações Importantes</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <i class="fas fa-calendar-check me-2 text-purple"></i>
-                                <strong>Horário de Funcionamento:</strong> Terça a Sábado, das 9h às 19h
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-clock me-2 text-purple"></i>
-                                <strong>Duração dos Serviços:</strong> Variam de 30min a 2h
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-exclamation-circle me-2 text-purple"></i>
-                                Cancelamentos com menos de 24h de antecedência podem ser cobrados
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-download me-2 text-purple"></i>
-                                <strong>Como instalar nosso app:</strong>
-                                <ul class="mt-2">
-                                    <li><strong>Android:</strong> Toque no menu <em>(⋮ )</em> no topo do
-                                        navegador e selecione <em>"Adicionar à tela inicial"</em>.</li>
-                                    <li><strong>iOS (iPhone/iPad):</strong> No Safari, toque no ícone<img
-                                            src="../assets/img/compartilhar_ios.png" alt="Ícone compartilhar iOS"
-                                            style="height: 1.5em; vertical-align: middle; margin: 0 0.25em;">na parte
-                                        inferior da tela e escolha <em>"Adicionar à Tela de Início"</em>.
-                                    </li>
-                                    <li><strong>Windows:</strong> No navegador Chrome ou Edge, clique no ícone de
-                                        instalação na barra de endereços ou vá em <em>Menu > Instalar aplicativo</em>.
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="card shadow p-4">
+                    <h5>Informações Importantes</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">🕘 <strong>Funcionamento:</strong> Terça a Sábado, das 9h às 19h
+                        </li>
+                        <li class="list-group-item">⏱️ <strong>Duração:</strong> 30min a 2h</li>
+                        <li class="list-group-item">⚠️ Cancelamentos com menos de 24h podem ser cobrados</li>
+                        <li class="list-group-item">
+                            📲 <strong>Instale nosso app:</strong>
+                            <ul class="mt-2">
+                                <li><strong>Android:</strong> Menu (⋮) > "Adicionar à tela inicial"</li>
+                                <li><strong>iOS:</strong> Ícone de compartilhar > "Adicionar à Tela de Início"</li>
+                                <li><strong>Windows:</strong> Menu > "Instalar aplicativo"</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Modal de Confirmação -->
+    <!-- Modal -->
     <div class="modal fade" id="confirmacaoModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Agendamento Confirmado!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <p id="confirmacaoTexto"></p>
                     <div class="alert alert-info">
-                        Você receberá um e-mail de confirmação com os detalhes do agendamento.
+                        Você receberá um e-mail de confirmação.
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-purple" data-bs-dismiss="modal">Fechar</button>
                     <a id="googleCalendarLink" class="btn btn-outline-primary" target="_blank">
-                        <i class="fab fa-google me-2"></i>Adicionar ao Google Agenda
+                        <i class="fab fa-google"></i> Adicionar ao Google Agenda
                     </a>
+                    <a id="whatsappLink" class="btn btn-success" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Confirmar via WhatsApp
+                    </a>
+                    <button class="btn btn-purple" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Scripts JS -->
-    <script src="../assets/js/agendamento.js"></script>
+    <!-- Scripts -->
     <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/scripts.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/agendamento.js"></script>
 </body>
 
 </html>

@@ -1,135 +1,88 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('agendamentoForm');
     const dataInput = document.getElementById('data');
     const horaSelect = document.getElementById('hora');
-    const telefoneInput = document.getElementById('telefone'); // <- Referência ao input de telefone
+  
+    // Impede datas passadas
     const hoje = new Date();
-
-    // Formata data para YYYY-MM-DD
-    const formatarData = (date) => {
-        const offset = date.getTimezoneOffset();
-        date = new Date(date.getTime() - (offset * 60 * 1000));
-        return date.toISOString().split('T')[0];
-    };
-
-    // Define data mínima como hoje
-    dataInput.min = formatarData(hoje);
-
-    // Bloqueia fisicamente domingos (0) e segundas (1)
-    dataInput.addEventListener('change', function () {
-        const selectedDate = new Date(this.value);
-        const diaSemana = selectedDate.getDay();
-
-        if (diaSemana === 0 || diaSemana === 1) {
-            this.value = ''; // Limpa a seleção inválida
-            horaSelect.innerHTML = '<option value="" selected disabled>Selecione um horário</option>';
-            return;
+    dataInput.min = hoje.toISOString().split('T')[0];
+  
+    dataInput.addEventListener('change', () => {
+      const data = new Date(dataInput.value + 'T12:00:00');
+      const diaSemana = data.getDay();
+      const hojeStr = new Date().toDateString();
+  
+      if (diaSemana === 0 || diaSemana === 1) {
+        horaSelect.innerHTML = `<option>❌ Fechado aos domingos e segundas</option>`;
+        alert('Atendemos de terça a sábado.');
+        return;
+      }
+  
+      horaSelect.innerHTML = `<option disabled selected>⏳ Carregando horários...</option>`;
+      const horarios = [];
+      const inicio = 9;
+      const fim = 19;
+      const agora = new Date();
+  
+      for (let h = inicio; h < fim; h++) {
+        for (let m = 0; m < 60; m += 30) {
+          const hora = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+          const horaCompleta = new Date(`${dataInput.value}T${hora}`);
+  
+          if (data.toDateString() === hojeStr && horaCompleta <= agora) continue;
+  
+          horarios.push(`<option value="${hora}">${hora}</option>`);
         }
-
-        // Se passou da validação, gera os horários
-        const isToday = selectedDate.toDateString() === hoje.toDateString();
-        horaSelect.innerHTML = '<option value="" selected disabled>Selecione um horário</option>';
-
-        // Terça a Sábado (2-6)
-        const startHour = isToday ? Math.max(9, hoje.getHours() + 1) : 9;
-        const endHour = 19;
-
-        for (let hour = startHour; hour < endHour; hour++) {
-            for (let minute = 0; minute < 60; minute += 30) {
-                if (isToday && hour === hoje.getHours() && minute <= hoje.getMinutes()) {
-                    continue;
-                }
-                const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-                horaSelect.innerHTML += `<option value="${timeString}">${timeString}</option>`;
-            }
-        }
-
-        if (horaSelect.options.length <= 1) {
-            horaSelect.innerHTML = '<option value="" selected disabled>Não há horários disponíveis hoje</option>';
-        }
+      }
+  
+      horaSelect.innerHTML = horarios.length ? `<option disabled selected>Escolha um horário</option>` + horarios.join('')
+                                              : `<option>😢 Nenhum horário disponível</option>`;
     });
-
-    // ✅ MÁSCARA DE TELEFONE
-    telefoneInput.addEventListener('input', function (e) {
-        let valor = e.target.value.replace(/\D/g, ''); // Remove não dígitos
-
-        if (valor.length > 11) {
-            valor = valor.slice(0, 11); // Máximo 11 dígitos
-        }
-
-        if (valor.length >= 2 && valor.length <= 6) {
-            valor = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
-        } else if (valor.length > 6 && valor.length <= 10) {
-            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 6)}-${valor.slice(6)}`;
-        } else if (valor.length > 10) {
-            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`;
-        }
-
-        e.target.value = valor;
+  
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      const nome = document.getElementById('nome').value;
+      const telefone = document.getElementById('telefone').value;
+      const servico = document.getElementById('servico').value;
+      const data = dataInput.value;
+      const hora = horaSelect.value;
+  
+      if (!data || !hora || !servico) return alert('Preencha todos os campos!');
+  
+      const [ano, mes, dia] = data.split('-');
+      const [h, min] = hora.split(':');
+      const dataISO = new Date(ano, mes - 1, dia, h, min);
+      const dataFormatada = `${dia}/${mes}/${ano}`;
+  
+      const detalhes = `Olá ${nome}, seu agendamento para ${servico} no dia ${dataFormatada} às ${hora} foi confirmado!`;
+      document.getElementById('confirmacaoTexto').textContent = detalhes;
+  
+      const calendarLink = gerarLinkGoogleCalendar(nome, telefone, servico, dataISO);
+      document.getElementById('googleCalendarLink').href = calendarLink;
+  
+      const whatsappLink = gerarLinkWhatsApp(nome, telefone, servico, dataFormatada, hora);
+      document.getElementById('whatsappLink').href = whatsappLink;
+  
+      new bootstrap.Modal(document.getElementById('confirmacaoModal')).show();
     });
-
-    // Envio do formulário
-    document.getElementById('agendamentoForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const nome = document.getElementById('nome').value;
-        const telefone = document.getElementById('telefone').value;
-        const servico = document.getElementById('servico').value;
-        const data = document.getElementById('data').value;
-        const hora = document.getElementById('hora').value;
-
-        if (!nome || !telefone || !servico || !data || !hora) {
-            alert('Por favor, preencha todos os campos corretamente!');
-            return;
-        }
-
-        // Formata a data e hora para o Google Agenda
-        const [year, month, day] = data.split('-');
-        const [hour, minute] = hora.split(':');
-        const startDate = new Date(year, month - 1, day, hour, minute);
-        const endDate = new Date(startDate);
-
-        // Define duração do serviço
-        if (servico.includes("Design") || servico.includes("Manicure") || servico.includes("Pedicure")) {
-            endDate.setHours(endDate.getHours(), endDate.getMinutes() + 30);
-        } else if (servico.includes("Coloração") || servico.includes("Podologia")) {
-            endDate.setHours(endDate.getHours() + 2);
-        } else {
-            endDate.setHours(endDate.getHours() + 1);
-        }
-
-        // Cria link para o Google Agenda
-        const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(servico)}` +
-            `&dates=${startDate.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}` +
-            `/${endDate.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}` +
-            `&details=Cliente: ${encodeURIComponent(nome)}%0ATelefone: ${encodeURIComponent(telefone)}` +
-            `&location=Nanda - Shalon Adonai&sf=true&output=xml`;
-
-        // Mostra modal de confirmação
-        document.getElementById('confirmacaoTexto').textContent =
-            `Olá ${nome}, seu agendamento para ${servico} no dia ${day}/${month}/${year} às ${hora} foi confirmado!`;
-        document.getElementById('googleCalendarLink').href = googleCalendarUrl;
-
-        new bootstrap.Modal(document.getElementById('confirmacaoModal')).show();
-    });
-});
-
-// Função auxiliar para formatar data (YYYY-MM-DD)
-function formatDate(date) {
-    const offset = date.getTimezoneOffset();
-    date = new Date(date.getTime() - (offset * 60 * 1000));
-    return date.toISOString().split('T')[0];
-}
-
-// Função para criar link do Google Agenda
-function createGoogleCalendarLink(nome, telefone, servico, startDate, endDate) {
-    const startISO = startDate.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-    const endISO = endDate.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-
-    const details = `Cliente: ${nome}%0ATelefone: ${telefone}%0A%0AObservações:`;
-
-    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(servico)}` +
-        `&dates=${startISO}/${endISO}` +
-        `&details=${details}` +
-        `&location=Nanda - Shalon Adonai` +
+  
+    function gerarLinkGoogleCalendar(nome, telefone, servico, inicio) {
+      const fim = new Date(inicio.getTime() + (servico.includes("Manicure") ? 30 : 60) * 60000);
+      const format = d => d.toISOString().replace(/[-:]/g, '').split('.')[0];
+  
+      return `https://www.google.com/calendar/render?action=TEMPLATE` +
+        `&text=Agendamento+Shalom+Adonai+-+${nome.split(' ')[0]}` +
+        `&dates=${format(inicio)}/${format(fim)}` +
+        `&details=Cliente:${nome}%0ATelefone:${telefone}%0AServiço:${servico}` +
+        `&location=Salão+Shalom+Adonai,+Rua+Nhatumani,+496` +
         `&sf=true&output=xml`;
-}
+    }
+  
+    function gerarLinkWhatsApp(nome, telefone, servico, data, hora) {
+      const texto = `Olá Shalom Adonai! Confirme meu agendamento:\n\n` +
+        `*Nome:* ${nome}\n*Telefone:* ${telefone}\n*Data:* ${data} às ${hora}\n*Serviço:* ${servico}\n\nPor favor, confirme.`;
+      return `https://wa.me/5511967036990?text=${encodeURIComponent(texto)}`;
+    }
+  });
+  
