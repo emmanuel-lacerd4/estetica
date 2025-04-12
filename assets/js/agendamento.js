@@ -73,24 +73,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nome = document.getElementById('nome').value;
     const telefone = document.getElementById('telefone').value;
-    const servico = document.getElementById('servico').value;
     const data = dataInput.value;
     const hora = horaSelect.value;
 
-    if (!data || !hora || !servico) return alert('Preencha todos os campos!');
+    // Coleta os serviços selecionados dos checkboxes
+    const checkboxes = document.querySelectorAll('input[name="servicos[]"]:checked');
+    const servicos = Array.from(checkboxes).map(checkbox => checkbox.value);
+    if (servicos.length === 0) {
+      alert('Selecione pelo menos um serviço!');
+      return;
+    }
+
+    if (!data || !hora) {
+      alert('Preencha todos os campos!');
+      return;
+    }
 
     const [ano, mes, dia] = data.split('-');
     const [h, min] = hora.split(':');
     const dataISO = new Date(ano, mes - 1, dia, h, min);
     const dataFormatada = `${dia}/${mes}/${ano}`;
 
-    const detalhes = `Olá ${nome}, seu agendamento para ${servico} no dia ${dataFormatada} às ${hora} foi confirmado!`;
+    const servicosTexto = servicos.join(', ');
+    const detalhes = `Olá ${nome}, seu agendamento para ${servicosTexto} no dia ${dataFormatada} às ${hora} foi confirmado!`;
     document.getElementById('confirmacaoTexto').textContent = detalhes;
 
-    const calendarLink = gerarLinkGoogleCalendar(nome, telefone, servico, dataISO);
+    const calendarLink = gerarLinkGoogleCalendar(nome, telefone, servicosTexto, dataISO);
     document.getElementById('googleCalendarLink').href = calendarLink;
 
-    const whatsappLink = gerarLinkWhatsApp(nome, telefone, servico, dataFormatada, hora);
+    const whatsappLink = gerarLinkWhatsApp(nome, telefone, servicosTexto, dataFormatada, hora);
     document.getElementById('whatsappLink').href = whatsappLink;
 
     new bootstrap.Modal(document.getElementById('confirmacaoModal')).show();
@@ -98,9 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === GERA LINK DO GOOGLE CALENDAR COM CONVIDADO ===
   function gerarLinkGoogleCalendar(nome, telefone, servico, inicio) {
-    const fim = new Date(inicio.getTime() + (servico.includes("Manicure") ? 30 : 60) * 60000);
+    const fim = new Date(inicio.getTime() + 60 * 60000); // Assume 1 hora por padrão
     const format = d => d.toISOString().replace(/[-:]/g, '').split('.')[0];
-    const emailConvidado = 'dantasandrew05@gmail.com'; // Substitua pelo seu email real
+    const emailConvidado = 'dantasandrew05@gmail.com';
 
     return `https://www.google.com/calendar/render?action=TEMPLATE` +
       `&text=Agendamento+Shalom+Adonai+-+${nome.split(' ')[0]}` +
