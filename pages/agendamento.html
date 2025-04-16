@@ -70,13 +70,11 @@
                                 <h5 class="fw-bold mb-3 text-purple">
                                     <i class="fas fa-concierge-bell me-2"></i> Serviços e Profissionais
                                 </h5>
-                                <div class="row">
-
+                                <div class="row g-3">
                                     <!-- Coluna 1 -->
                                     <div class="col-md-6">
-
                                         <!-- Cabelos -->
-                                        <div class="mb-4">
+                                        <div class="servico-categoria p-3 mb-3">
                                             <h6 class="fw-bold text-purple mb-2">Cabelos</h6>
                                             <div class="form-check mb-2">
                                                 <input class="form-check-input" type="checkbox" name="servicos[]"
@@ -91,7 +89,7 @@
                                         </div>
 
                                         <!-- Unhas -->
-                                        <div class="mb-4">
+                                        <div class="servico-categoria p-3 mb-3">
                                             <h6 class="fw-bold text-purple mb-2">Unhas</h6>
                                             <div class="form-check mb-2">
                                                 <input class="form-check-input" type="checkbox" name="servicos[]"
@@ -111,136 +109,155 @@
                                         </div>
                                     </div>
 
-                                    <!-- Depilação -->
-                                    <div class="mb-4">
-                                        <h6 class="fw-bold text-purple mb-2">Depilação</h6>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" name="servicos[]"
-                                                id="depilacaoTeresa" value="Teresa">
-                                            <label class="form-check-label" for="depilacaoTeresa">Teresa</label>
+                                    <!-- Coluna 2 -->
+                                    <div class="col-md-6">
+                                        <!-- Depilação -->
+                                        <div class="servico-categoria p-3 mb-3">
+                                            <h6 class="fw-bold text-purple mb-2">Depilação</h6>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="servicos[]"
+                                                    id="depilacaoTeresa" value="Teresa">
+                                                <label class="form-check-label" for="depilacaoTeresa">Teresa</label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Podologia -->
+                                        <div class="servico-categoria p-3 mb-3">
+                                            <h6 class="fw-bold text-purple mb-2">Podologia</h6>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="servicos[]"
+                                                    id="podologiaGeisa" value="Geisa">
+                                                <label class="form-check-label" for="podologiaGeisa">Geisa</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="servicos[]"
+                                                    id="podologiaThalita" value="Thalita">
+                                                <label class="form-check-label" for="podologiaThalita">Thalita</label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sobrancelhas -->
+                                        <div class="servico-categoria p-3 mb-3">
+                                            <h6 class="fw-bold text-purple mb-2">Sobrancelhas</h6>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="servicos[]"
+                                                    id="sobrancelhasCarol" value="Carol">
+                                                <label class="form-check-label" for="sobrancelhasCarol">Carol</label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cílios -->
+                                        <div class="servico-categoria p-3 mb-3">
+                                            <h6 class="fw-bold text-purple mb-2">Cílios</h6>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="servicos[]"
+                                                    id="ciliosTiffany" value="Tiffany">
+                                                <label class="form-check-label" for="ciliosTiffany">Tiffany</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Coluna 2 -->
+                            <!-- Data e Hora -->
+                            <div class="row g-3 mb-4">
                                 <div class="col-md-6">
+                                    <label for="data" class="form-label fw-bold">
+                                        <i class="fas fa-calendar-day me-1"></i> Data
+                                    </label>
+                                    <input type="date" class="form-control form-control-lg" id="data" required
+                                        onkeydown="return false" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="hora" class="form-label fw-bold">
+                                        <i class="fas fa-clock me-1"></i> Horário
+                                    </label>
+                                    <select class="form-select form-select-lg" id="hora" required>
+                                        <option value="" selected disabled>Selecione</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                                    <!-- Podologia -->
-                                    <div class="mb-4">
-                                        <h6 class="fw-bold text-purple mb-2">Podologia</h6>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input" type="checkbox" name="servicos[]"
-                                                id="podologiaGeisa" value="Geisa">
-                                            <label class="form-check-label" for="podologiaGeisa">Geisa</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="servicos[]"
-                                                id="podologiaThalita" value="Thalita">
-                                            <label class="form-check-label" for="podologiaThalita">Thalita</label>
-                                        </div>
-                                    </div>
+                            <!-- Botões -->
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-success btn-lg w-50 py-3 fw-bold">
+                                    <i class="fas fa-calendar-check me-2"></i> Confirmar
+                                </button>
+                                <button type="button" class="btn btn-danger btn-lg w-50 py-3 fw-bold" id="clearFormBtn">
+                                    <i class="fas fa-trash-alt me-2"></i> Limpar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-                                    <!-- Sobrancelhas -->
-                                    <div class="mb-4">
-                                        <h6 class="fw-bold text-purple mb-2">Sobrancelhas</h6>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="servicos[]"
-                                                id="sobrancelhasCarol" value="Carol">
-                                            <label class="form-check-label" for="sobrancelhasCarol">Carol</label>
-                                        </div>
-                                    </div>
-
-                                    <!-- Cílios -->
-                                    <div class="mb-4">
-                                        <h6 class="fw-bold text-purple mb-2">Cílios</h6>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="servicos[]"
-                                                id="ciliosTiffany" value="Tiffany">
-                                            <label class="form-check-label" for="ciliosTiffany">Tiffany</label>
-                                        </div>
+            <!-- Informações Importantes -->
+            <div class="col-lg-5">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-4">
+                            <i class="fas fa-calendar-check me-2 text-purple"></i> Informações Importantes
+                        </h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center border-0 py-3">
+                                <div class="bg-opacity-10 me-3">
+                                    <i class="fas fa-calendar-check me-2 text-purple"></i>
+                                </div>
+                                <div>
+                                    <strong>Horário de Funcionamento:</strong><br>
+                                    Terça a Sábado, das 9h às 19h
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center border-0 py-3">
+                                <div class="bg-opacity-10 me-3">
+                                    <i class="fas fa-clock text-purple"></i>
+                                </div>
+                                <div>
+                                    <strong>Duração dos Serviços:</strong><br>
+                                    <span class="badge bg-purple bg-opacity-10 me-1">30min</span>
+                                    <span class="badge bg-purple bg-opacity-10 me-1">1h</span>
+                                    <span class="badge bg-purple bg-opacity-10">2h</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center border-0 py-3">
+                                <div class="bg-opacity-10 me-3">
+                                    <i class="fas fa-exclamation-circle me-2 text-purple"></i>
+                                </div>
+                                <div>
+                                    <strong>Política de Cancelamento:</strong><br>
+                                    Cancelamentos com menos de 24h de antecedência podem ser cobrados
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mt-4 p-3 bg-light rounded-3">
+                            <h6 class="fw-bold text-center mb-4">
+                                <i class="fas fa-map-marker-alt me-2 text-purple"></i> Nosso Endereço
+                            </h6>
+                            <div class="row">
+                                <div class="col-12 mb-4">
+                                    <div class="map-ratio">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.18563588329!2d-46.50304562447262!3d-23.52582476028797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce60b9c1722ad5%3A0x3be9dd2e8773e652!2sNanda%20shalom%20adonai!5e0!3m2!1spt-PT!2sbr!4v1743808545542!5m2!1spt-PT!2sbr"
+                                            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                        </iframe>
                                     </div>
                                 </div>
                             </div>
-                    </div>
-
-                    <!-- Data e Hora -->
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-6">
-                            <label for="data" class="form-label fw-bold">
-                                <i class="fas fa-calendar-day me-1"></i> Data
-                            </label>
-                            <input type="date" class="form-control form-control-lg" id="data" required
-                                onkeydown="return false" />
+                            <p class="mb-2 text-center">
+                                <i class="fas fa-store me-2 text-muted"></i> R. Nhatumani, 496
+                            </p>
+                            <div class="text-center">
+                                <a href="https://www.google.com/maps/dir//Nanda+shalom+adonai/@-23.5258248,-46.5030456,17z"
+                                    class="btn btn-sm btn-outline-purple" target="_blank">
+                                    <i class="fas fa-directions me-1 text-purple"></i> Como chegar
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="hora" class="form-label fw-bold">
-                                <i class="fas fa-clock me-1"></i> Horário
-                            </label>
-                            <select class="form-select form-select-lg" id="hora" required>
-                                <option value="" selected disabled>Selecione</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-purple btn-lg w-100 py-3 fw-bold">
-                        <i class="fas fa-calendar-check me-2"></i> Confirmar Agendamento
-                    </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Informações Importantes -->
-        <div class="col-lg-5">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body p-4">
-                    <h5 class="card-title fw-bold mb-4">
-                        <i class="fas fa-calendar-check me-2 text-purple"></i> Informações Importantes
-                    </h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex align-items-center border-0 py-3">
-                            <div class="bg-opacity-10 me-3">
-                                <i class="fas fa-calendar-check me-2 text-purple"></i>
-                            </div>
-                            <div>
-                                <strong>Horário de Funcionamento:</strong><br>
-                                Terça a Sábado, das 9h às 19h
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex align-items-center border-0 py-3">
-                            <div class="bg-opacity-10 me-3">
-                                <i class="fas fa-clock text-purple"></i>
-                            </div>
-                            <div>
-                                <strong>Duração dos Serviços:</strong><br>
-                                <span class="badge bg-purple bg-opacity-10 me-1">30min</span>
-                                <span class="badge bg-purple bg-opacity-10 me-1">1h</span>
-                                <span class="badge bg-purple bg-opacity-10">2h</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex align-items-center border-0 py-3">
-                            <div class="bg-opacity-10 me-3">
-                                <i class="fas fa-exclamation-circle me-2 text-purple"></i>
-                            </div>
-                            <div>
-                                <strong>Política de Cancelamento:</strong><br>
-                                Cancelamentos com menos de 24h de antecedência podem ser cobrados
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="mt-4 p-3 bg-light rounded-3">
-                        <h6 class="fw-bold">
-                            <i class="fas fa-map-marker-alt me-2 text-purple"></i> Localização
-                        </h6>
-                        <p class="mb-2">
-                            <i class="fas fa-store me-2 text-muted"></i> R. Nhatumani, 496
-                        </p>
-                        <a href="#" class="btn btn-sm btn-outline-purple">
-                            <i class="fas fa-directions me-1 text-purple"></i> Como chegar
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- Modal de Confirmação -->
@@ -277,6 +294,14 @@
     <script src="../assets/js/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/agendamento.js"></script>
+    <script>
+        document.getElementById('clearFormBtn').addEventListener('click', () => {
+            const form = document.getElementById('agendamentoForm');
+            form.reset();
+            const horaSelect = document.getElementById('hora');
+            horaSelect.innerHTML = '<option value="" selected disabled>Selecione</option>';
+        });
+    </script>
 </body>
 
 </html>
