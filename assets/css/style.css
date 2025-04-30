@@ -280,7 +280,7 @@ footer hr {
     padding: 10px 25px;
     transition: all 0.3s ease;
     font-weight: 500;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .btn-purple:hover {
@@ -431,7 +431,7 @@ footer hr {
 /* Ajustes para inputs e selects */
 .form-control,
 .form-select {
-    border-radius: 20px !important;
+    border-radius: 5px !important;
     border: 1px solid #ced4da;
     padding: 10px;
     height: 48px;
