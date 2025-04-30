@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return `https://www.google.com/calendar/render?action=TEMPLATE` +
       `&text=Agendamento+Shalom+Adonai+-+${nome.split(' ')[0]}` +
       `&dates=${format(inicio)}/${format(fim)}` +
-      `&details=Cliente:${nome}%0ATelefone:${telefone}%0AServiço:${servico}` +
+      `&details=Cliente: ${nome}%0ATelefone: ${telefone}%0AServiço: ${servico}` +
       `&location=Salão+Shalom+Adonai,+Rua+Nhatumani,+496` +
       `&add=${encodeURIComponent(emailConvidado)}` +
       `&sf=true&output=xml`;
