@@ -14,7 +14,6 @@ body {
     font-family: 'Arial', sans-serif;
     color: var(--text-color);
     padding-top: 56px;
-    /* Compensar navbar fixa */
     margin: 0;
     line-height: 1.6;
 }
@@ -352,9 +351,15 @@ footer hr {
 }
 
 /* Ajustes para o formulário de agendamento */
+#agendamentoForm .col-md-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 #agendamentoForm .form-label {
     font-weight: 600;
     color: var(--text-color);
+    margin-bottom: 5px;
 }
 
 #agendamentoForm .fas {
@@ -368,10 +373,15 @@ footer hr {
     color: var(--purple);
     font-weight: 600;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #agendamentoForm .form-check {
     margin-bottom: 8px;
+}
+
+#agendamentoForm .form-check-label {
+    font-size: 0.9rem;
 }
 
 /* Estilo para o card de informações importantes */
@@ -384,10 +394,17 @@ footer hr {
 .card .list-group-item {
     border: none;
     padding: 10px 0;
+    display: flex;
+    align-items: flex-start;
 }
 
 .card .list-group-item i {
     color: var(--purple);
+    margin-top: 2px;
+}
+
+.card .list-group-item div {
+    flex: 1;
 }
 
 .card .badge {
@@ -417,6 +434,7 @@ footer hr {
     border-radius: 20px !important;
     border: 1px solid #ced4da;
     padding: 10px;
+    height: 48px;
 }
 
 .form-control:focus,
@@ -433,6 +451,12 @@ h1 i {
 /* Ajustes para o texto de localização */
 .card p {
     margin-bottom: 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.card p i {
+    margin-top: 2px;
 }
 
 /* Ajustes para o botão Limpar */
@@ -451,4 +475,31 @@ h1 i {
 /* Ajustes para ícones */
 .text-purple {
     color: var(--purple);
+}
+
+/* Ajustes para alinhamento dos campos */
+#agendamentoForm .mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+#agendamentoForm .row.mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+#agendamentoForm .col-md-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#agendamentoForm .form-check-input {
+    margin-top: 2px;
+}
+
+/* Ajustes para o card de informações importantes */
+.card .list-group-flush .list-group-item {
+    padding: 8px 0;
+}
+
+.card hr {
+    margin: 15px 0;
 }
