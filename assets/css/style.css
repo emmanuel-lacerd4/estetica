@@ -9,8 +9,6 @@
     --text-color: #333333;
 }
 
-
-
 /* ================ ESTILOS GERAIS ================ */
 body {
     font-family: 'Arial', sans-serif;
@@ -58,9 +56,8 @@ h6 {
     opacity: 0.8;
 }
 
- bg-purple -->.bg-purple {
-    background-color: #6f2da8 !important;
-    /* tom de roxo bonito */
+.bg-purple {
+    background-color: var(--purple) !important;
 }
 
 .navbar-brand .fas {
@@ -69,17 +66,13 @@ h6 {
 
 .custom-spacing {
     padding-left: 20px;
-    /* ou use margin-left: 20px; */
 }
 
 /* ================ HERO SECTION ================ */
-
-/* Seção Hero com imagem de fundo */
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), no-repeat center center;
     position: relative;
     height: 100vh;
-    /* ou ajuste conforme necessário */
     overflow: hidden;
     background-size: cover;
     height: 80vh;
@@ -88,7 +81,6 @@ h6 {
     text-align: center;
     color: var(--white);
     margin-top: -56px;
-    /* Compensar navbar fixa */
 }
 
 .hero-background-img {
@@ -101,7 +93,6 @@ h6 {
     z-index: -1;
 }
 
-/* Se quiser um overlay escuro (como no linear-gradient) */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -196,7 +187,6 @@ h6 {
     color: var(--text-color);
     line-height: 1.6;
     margin-left: 34px;
-    /* Alinhar com o ícone */
 }
 
 /* MAPA */
@@ -291,6 +281,7 @@ footer hr {
     padding: 10px 25px;
     transition: all 0.3s ease;
     font-weight: 500;
+    border-radius: 20px;
 }
 
 .btn-purple:hover {
@@ -315,24 +306,18 @@ footer hr {
     }
 }
 
-/* Ajustes específicos para mobile */
 @media (max-width: 768px) {
     .hero-section {
-
-
         min-height: calc(100vh - 56px);
-        /* Ajusta a altura */
     }
 
     .hero-section h1 {
         font-size: 2rem;
-        /* Reduz o tamanho do título */
         margin-top: 0;
     }
 
     .hero-section p.lead {
         font-size: 1.2rem;
-        /* Reduz o tamanho do subtítulo */
     }
 }
 
@@ -364,4 +349,106 @@ footer hr {
     footer p {
         font-size: 0.9rem;
     }
+}
+
+/* Ajustes para o formulário de agendamento */
+#agendamentoForm .form-label {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+#agendamentoForm .fas {
+    color: var(--purple);
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+#agendamentoForm h6 {
+    color: var(--purple);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#agendamentoForm .form-check {
+    margin-bottom: 8px;
+}
+
+/* Estilo para o card de informações importantes */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card .list-group-item {
+    border: none;
+    padding: 10px 0;
+}
+
+.card .list-group-item i {
+    color: var(--purple);
+}
+
+.card .badge {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+}
+
+/* Botão "Como chegar" */
+.btn-outline-purple {
+    border: 2px solid var(--purple);
+    color: var(--purple);
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.btn-outline-purple:hover {
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+/* Ajustes para inputs e selects */
+.form-control,
+.form-select {
+    border-radius: 20px !important;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 5px rgba(106, 48, 147, 0.3);
+}
+
+/* Ajustes para o título principal */
+h1 i {
+    color: var(--purple);
+}
+
+/* Ajustes para o texto de localização */
+.card p {
+    margin-bottom: 0;
+}
+
+/* Ajustes para o botão Limpar */
+.btn-outline-secondary {
+    border-radius: 20px;
+    border: 2px solid #ced4da;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+}
+
+/* Ajustes para ícones */
+.text-purple {
+    color: var(--purple);
 }
