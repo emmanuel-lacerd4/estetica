@@ -281,6 +281,10 @@ footer hr {
     transition: all 0.3s ease;
     font-weight: 500;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .btn-purple:hover {
@@ -288,6 +292,33 @@ footer hr {
     color: var(--white);
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(106, 48, 147, 0.3);
+}
+
+/* Ajustes para o botão Limpar */
+.btn-secondary {
+    border-radius: 20px;
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-secondary:hover {
+    background-color: #adb5bd;
+    border-color: #bec6ce;
+    transform: translateY(-3px);
+    /* Adicionada a mesma animação de elevação */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* Adicionada sombra similar, ajustada para combinar com o estilo */
+}
+
+/* Garante que os ícones sejam visíveis e bem proporcionados */
+.btn-purple i,
+.btn-secondary i {
+    font-size: 1.2rem;
+    margin: 0;
 }
 
 /* ================ RESPONSIVIDADE ================ */
@@ -457,19 +488,6 @@ h1 i {
 
 .card p i {
     margin-top: 2px;
-}
-
-/* Ajustes para o botão Limpar */
-.btn-outline-secondary {
-    border-radius: 20px;
-    border: 2px solid #ced4da;
-    color: var(--text-color);
-    transition: all 0.3s ease;
-}
-
-.btn-outline-secondary:hover {
-    background-color: #f8f9fa;
-    border-color: #adb5bd;
 }
 
 /* Ajustes para ícones */
