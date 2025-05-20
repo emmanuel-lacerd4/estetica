@@ -5,3 +5,6 @@ Site com PWA em agendamentos para marcação dos clientes em um salão de estét
 
 ## Author
 Emmanuel L. Nogueira
+
+## PWA - agendamento.html
+![qrcode](https://github.com/emmanuel-lacerd4/estetica/blob/main/assets/img/qrcode_pwa.png)
