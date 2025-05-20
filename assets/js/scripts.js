@@ -14,3 +14,5 @@ if ('serviceWorker' in navigator) {
             })
     })
 }
+
+//SCRIPT DO BLOQUEADOR DE SERVIÇOS

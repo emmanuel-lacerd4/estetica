@@ -13,39 +13,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-purple fixed-top">
-        <div class="container">
-            <a class="navbar-brand">
-                <i class="fas fa-spa me-2"></i>Nanda - Shalom Adonai
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cabelos.html">Cabelos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="unhas.html">Unhas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sobrancelhas.html">Sobrancelhas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="depilacao.html">Depilação</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="podologia.html">Podologia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="agendamento.html">Agendamento</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <main class="container mt-5 pt-4">
         <h1 class="text-center mb-4">
             <i class="fas fa-calendar-alt me-2"></i> Agende Seu Horário
@@ -61,6 +28,7 @@
                             </label>
                             <input type="text" id="nome" class="form-control rounded" required />
                         </div>
+                        <br>
                         <div class="col-md-6">
                             <label for="telefone" class="form-label d-flex align-items-center">
                                 <i class="fas fa-phone me-2 text-purple"></i> Telefone/WhatsApp
@@ -75,65 +43,67 @@
                             <i class="fas fa-cut me-2 text-purple"></i> Serviços e Profissionais
                         </label>
                         <div class="row">
-                            <!-- Cabelos -->
-                            <div class="col-md-6">
+                            <!-- Coluna da esquerda -->
+                            <div class="col-md-6 mt-3">
+                                <!-- Cabelos -->
                                 <h6>Cabelos</h6>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="fernanda" value="Fernanda">
+                                    <input class="form-check-input" type="radio" id="fernanda" value="Fernanda"
+                                        name="cabelos">
                                     <label class="form-check-label" for="fernanda">Fernanda</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rosana" value="Rosana">
+                                    <input class="form-check-input" type="radio" id="rosana" value="Rosana"
+                                        name="cabelos">
                                     <label class="form-check-label" for="rosana">Rosana</label>
                                 </div>
+
+                                <!-- Unhas -->
+                                <h6 class="mt-3">Unhas</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="daniela" value="Daniela"
+                                        name="unhas">
+                                    <label class="form-check-label" for="daniela">Daniela</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="geisa" value="Geisa" name="unhas">
+                                    <label class="form-check-label" for="geisa">Geisa</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="thalita" value="Thalita"
+                                        name="unhas">
+                                    <label class="form-check-label" for="thalita">Thalita</label>
+                                </div>
                             </div>
-                            <!-- Podologia -->
-                            <div class="col-md-6">
+
+                            <!-- Coluna da direita -->
+                            <div class="col-md-6 mt-3">
+                                <!-- Podologia -->
                                 <h6>Podologia</h6>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="geisaPodologia"
-                                        value="Geisa (Podologia)">
-                                    <label class="form-check-label" for="geisaPodologia">Geisa (Podologia)</label>
+                                    <input class="form-check-input" type="radio" id="geisa-podologia" value="Geisa"
+                                        name="podologia">
+                                    <label class="form-check-label" for="geisa-podologia">Geisa</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="thaliaPodologia"
-                                        value="Thalia (Podologia)">
-                                    <label class="form-check-label" for="thaliaPodologia">Thalia (Podologia)</label>
+                                    <input class="form-check-input" type="radio" id="thalita" value="Thalita"
+                                        name="podologia">
+                                    <label class="form-check-label" for="thalita">Thalita</label>
                                 </div>
-                            </div>
-                            <!-- Unhas -->
-                            <div class="col-md-6 mt-3">
-                                <h6>Unhas</h6>
+
+                                <!-- Sobrancelhas -->
+                                <h6 class="mt-3">Sobrancelhas</h6>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="daniela"
-                                        value="Daniela (Manicure e Pedicure)">
-                                    <label class="form-check-label" for="daniela">Daniela (Manicure e Pedicure)</label>
+                                    <input class="form-check-input" type="radio" id="carol" value="Carol"
+                                        name="sobrancelhas">
+                                    <label class="form-check-label" for="carol">Carol</label>
                                 </div>
+
+                                <!-- Cílios -->
+                                <h6 class="mt-3">Cílios</h6>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="geisaUnhas"
-                                        value="Geisa (Manicure e Pedicure)">
-                                    <label class="form-check-label" for="geisaUnhas">Geisa (Manicure e Pedicure)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="thaliaUnhas"
-                                        value="Thalia (Manicure e Pedicure)">
-                                    <label class="form-check-label" for="thaliaUnhas">Thalia (Manicure e
-                                        Pedicure)</label>
-                                </div>
-                            </div>
-                            <!-- Sobrancelhas -->
-                            <div class="col-md-6 mt-3">
-                                <h6>Sobrancelhas</h6>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="carol" value="Carol (Design)">
-                                    <label class="form-check-label" for="carol">Carol (Design)</label>
-                                </div>
-                            </div>
-                            <!-- Cílios -->
-                            <div class="col-md-6 mt-3">
-                                <h6>Cílios</h6>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="tiffany" value="Tiffany">
+                                    <input class="form-check-input" type="radio" id="tiffany" value="Tiffany"
+                                        name="cilios">
                                     <label class="form-check-label" for="tiffany">Tiffany</label>
                                 </div>
                             </div>
@@ -154,7 +124,7 @@
                                 <i class="fas fa-clock me-2 text-purple"></i> Horário
                             </label>
                             <select id="hora" class="form-select rounded" required>
-                                <option value="" selected disabled>Selecione</option>
+                                <option value="" selected disabled>Selecione um profissional primeiro</option>
                             </select>
                         </div>
                     </div>
@@ -168,7 +138,7 @@
             </div>
 
             <!-- Informações Importantes -->
-            <div class="col-md-6">
+            <div class="mt-3 col-md-6">
                 <div class="card shadow p-4">
                     <h5 class="d-flex align-items-center">
                         <i class="fas fa-info-circle me-2 text-purple"></i> Informações Importantes
@@ -197,6 +167,20 @@
                                 <strong>Política de Cancelamento:</strong><br>Cancelamentos com menos de 24h de
                                 antecedência podem ser cobrados
                             </div>
+                        </li>
+                    </ul>
+                    <!-- Instalação do aplicativo -->
+                    <hr>
+                    <ul class="mt-2">
+                        <h6><strong>Instale nosso app:</strong></h6>
+                        <li><strong>Android:</strong> Menu (⋮) > "Adicionar à tela inicial"</li>
+                        <li><strong>iOS (iPhone/iPad):</strong> No Safari, toque no ícone<img
+                                src="../assets/img/compartilhar_ios.png" alt="Ícone compartilhar iOS"
+                                style="height: 1.5em; vertical-align: middle; margin: 0 0.25em;">na parte
+                            inferior da tela e escolha <em>"Adicionar à Tela de Início"</em>.
+                        </li>
+                        <li><strong>Windows:</strong> No navegador Chrome ou Edge, clique no ícone de
+                            instalação na barra de endereços ou vá em <em>Menu > Instalar aplicativo</em>.
                         </li>
                     </ul>
                     <hr>
